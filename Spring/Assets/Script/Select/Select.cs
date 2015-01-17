@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Select {
+public class Select  : MonoBehaviour {
 
 	// Use this for initialization
 	void Start ()
@@ -13,7 +13,10 @@ public class Select {
 	void Update ()
 	{
 		// tapされたかどうか
-		if (Input.touchCount > 0) {
+		//if (Input.touchCount > 0) {
+		if (Input.GetMouseButtonDown(0)) {
+			Debug.Log(Input.mousePosition.x);
+			Debug.Log(Input.mousePosition.y);
 			// tapされたのでScene遷移
 			Application.LoadLevel ("SceneResult");
 		}
