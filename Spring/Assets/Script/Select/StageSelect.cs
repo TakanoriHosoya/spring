@@ -17,10 +17,12 @@ public class StageSelect : MonoBehaviour {
 
 	public void pushSelectButton ()
 	{
-		// ステージ番号を送る処理を追加
+		// ステージ番号を送る処理
 		Debug.Log (stageNumber);
 
+		PlayerPrefs.SetInt ("STAGE_NUM", stageNumber);
+
 		//Application.LoadLevel ("SceneMain");
-		FadeManager.Instance.LoadLevel("SceneMain",1.0f);
+		FadeManager.Instance.LoadLevel("SceneMain", 1.0f);
 	}
 }
