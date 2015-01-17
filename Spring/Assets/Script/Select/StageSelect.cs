@@ -3,6 +3,8 @@ using System.Collections;
 
 public class StageSelect : MonoBehaviour {
 
+	public int stageNumber;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -13,4 +15,12 @@ public class StageSelect : MonoBehaviour {
 	
 	}
 
+	public void pushSelectButton ()
+	{
+		// ステージ番号を送る処理を追加
+		Debug.Log (stageNumber);
+
+
+		Application.LoadLevel ("SceneMain");
+	}
 }

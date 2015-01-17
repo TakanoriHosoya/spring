@@ -13,7 +13,11 @@ public class Title : MonoBehaviour {
 	void Update ()
 	{
 		// tapされたかどうか
-		//if (Input.touchCount > 0) {
+		if (Input.touchCount > 0) {
+			// tapされたのでScene遷移
+			Application.LoadLevel ("SceneSelect");
+		}
+
 		if (Input.GetMouseButtonDown(0)) {
 			// tapされたのでScene遷移
 			Application.LoadLevel ("SceneSelect");
