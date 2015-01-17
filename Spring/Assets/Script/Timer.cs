@@ -36,6 +36,7 @@ public class Timer : MonoBehaviour {
 
 	// ステージ番号とタイムを保存
 	public void saveStageTime(string stage){
+		this.stopTimer ();
 		PlayerPrefs.SetFloat (stage, this.time);
 		PlayerPrefs.Save ();
 	}

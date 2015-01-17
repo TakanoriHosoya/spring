@@ -16,6 +16,11 @@ public class Goal : MonoBehaviour {
 	// プレイヤーがゴールに衝突したら
 	void OnTriggerEnter2D (Collider2D col) {
 		if (col.gameObject.name == "Player") {
+			// タイマーを止めて保存
+			Transform timerObject = gameObject.transform.Find ("Timer");
+			if (timerObject) {
+				timerObject.GetComponent<Timer> ().saveStageTime ("stage_1");
+			}
 			StartCoroutine ("goalEvent");
 		}
 	}
