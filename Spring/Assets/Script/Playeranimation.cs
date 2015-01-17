@@ -10,7 +10,7 @@ public class Playeranimation : MonoBehaviour {
 	public bool isWall  = false;	// 壁にはりついてる
 	
 	// animationをデータを受け取るときに仕様
-	public int type = 1;			// デフォルトは待機モーション
+	public static int type = 1;			// デフォルトは待機モーション
 
 	// Use this for initialization
 	void Start () {
@@ -59,6 +59,29 @@ public class Playeranimation : MonoBehaviour {
 		isStart = false;	// スタート
 		isFly   = false;	// 飛んでる
 		isWall  = false;	// 壁に張り付いてる
+	}
+
+	void changeVelocity(int changeFlg) {
+		switch (changeFlg) {
+		case (1):
+			Player.speed = 1;
+			break;
+		case (2):
+			Player.speed = 3;
+			break;
+		case (3):
+			Player.speed = 5;
+			break;
+		case (4):
+			Player.speed = 7;
+			break;
+		case (5):
+			Player.speed = 10;
+			break;
+		default:
+			Player.speed = 1;
+			break;
+		}
 	}
 
 	/********************************************
