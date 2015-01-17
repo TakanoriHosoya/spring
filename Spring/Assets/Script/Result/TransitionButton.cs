@@ -1,25 +1,26 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class TransitionButton : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 
-	void OnGUI()
+	public void selectButtonClick()
 	{
-		Rect rect = new Rect(50, 300, 200, 50);
-		bool isClicked = GUI.Button(rect, "Go to Stage Select");
-		if (isClicked)
-		{
-			Application.LoadLevel ("SceneSelect");
-		}
+		Application.LoadLevel ("SceneSelect");
+	}
+
+	public void retryButtonClick()
+	{
+		Application.LoadLevel ("SceneMain");
 	}
 }
