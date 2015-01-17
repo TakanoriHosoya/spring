@@ -13,6 +13,12 @@ public class Background : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+
+		if (playerObject) {
+			this.gameObject.transform.position = new Vector3 (0f, playerObject.transform.position.y + 4f,0f);
+		}
+
+		/*
 		// プレイヤーの速度ベクトルに対して背景が動くように
 		float y = Mathf.Repeat (Time.time * playerObject.rigidbody2D.velocity.y * 0.1f, 1);
 		Debug.Log (playerObject.rigidbody2D.velocity.y);
@@ -22,6 +28,6 @@ public class Background : MonoBehaviour {
 
 		// マテリアルにオフセットを設定する
 		renderer.sharedMaterial.SetTextureOffset ("_MainTex", offset);
-	
+		*/
 	}
 }
