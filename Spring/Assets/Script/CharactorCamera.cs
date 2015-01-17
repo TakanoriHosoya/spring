@@ -7,13 +7,19 @@ public class CharactorCamera : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (playerObject) {
-			this.gameObject.transform.position = new Vector3 (0f, playerObject.transform.position.y + 4f,-10f);
+
+			if (playerObject.transform.position.y - this.gameObject.transform.position.y >= 2.0f) {
+				this.gameObject.transform.position = new Vector3 (0f, playerObject.transform.position.y - 2f,-10f);
+			}
+			if (playerObject.transform.position.y - this.gameObject.transform.position.y <= -4.0f) {
+				this.gameObject.transform.position = new Vector3 (0f, playerObject.transform.position.y + 4f,-10f);
+			}
 		}
 	
 	}

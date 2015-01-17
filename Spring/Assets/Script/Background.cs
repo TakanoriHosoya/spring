@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Background : MonoBehaviour {
 
-	public GameObject playerObject;
+	public GameObject cameraObject;
 
 	// Use this for initialization
 	void Start () {
@@ -14,8 +14,8 @@ public class Background : MonoBehaviour {
 	void Update () {
 
 
-		if (playerObject) {
-			this.gameObject.transform.position = new Vector3 (0f, playerObject.transform.position.y + 4f,0f);
+		if (cameraObject) {
+			this.gameObject.transform.position = new Vector3 (0f, cameraObject.transform.position.y,0f);
 		}
 
 		/*
