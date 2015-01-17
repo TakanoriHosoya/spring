@@ -30,6 +30,7 @@ public class Player : MonoBehaviour {
 			// スタート→溜め
 			if (playerState == (int)Define.StateArray.STATE_READY) {
 				playerState = (int)Define.StateArray.STATE_START;
+				Playeranimation.type = 2;
 				// ジャンプ中→掴まり準備
 			} else if (playerState == (int)Define.StateArray.STATE_JUMP) {
 				playerState = (int)Define.StateArray.STATE_CATCH_READY;
@@ -41,6 +42,7 @@ public class Player : MonoBehaviour {
 				Vector2 direction = new Vector2 (directionX, 1).normalized;
 				rigidbody2D.velocity = direction * speed;
 				playerState = (int)Define.StateArray.STATE_JUMP;
+				Playeranimation.type = 3;
 			// ジャンプ中
 			} else if (playerState == (int)Define.StateArray.STATE_CATCH_READY) {
 				playerState = (int)Define.StateArray.STATE_JUMP;

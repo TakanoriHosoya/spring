@@ -29,6 +29,7 @@ public class Wall : MonoBehaviour {
 			} else if (Player.playerState == (int)Define.StateArray.STATE_CATCH_READY) {
 				Player.playerState = (int)Define.StateArray.STATE_CATCH;
 				enterPlayer.rigidbody2D.velocity = new Vector2 (0, 0);
+				Playeranimation.type = 4;
 			}
 		}
 	}
