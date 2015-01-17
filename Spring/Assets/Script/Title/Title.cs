@@ -15,8 +15,6 @@ public class Title : MonoBehaviour {
 		// tapされたかどうか
 		//if (Input.touchCount > 0) {
 		if (Input.GetMouseButtonDown(0)) {
-			Debug.Log(Input.mousePosition.x);
-			Debug.Log(Input.mousePosition.y);
 			// tapされたのでScene遷移
 			Application.LoadLevel ("SceneSelect");
 		}
