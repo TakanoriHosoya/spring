@@ -15,13 +15,10 @@ public class Wall : MonoBehaviour {
 	// 衝突時
 	void OnTriggerEnter2D (Collider2D col) {
 		if (col.gameObject.name == "Player") {
-			if (gameObject.name == "WallLeft") {
-				Player.playerDirection = Define.DIRECTION_RIGHT;
-			} else {
-				Player.playerDirection = Define.DIRECTION_LEFT;
-			}
-
 			GameObject enterPlayer = col.gameObject;
+			// 方向転換
+			Player _player = enterPlayer.GetComponent<Player>();
+			_player.changeDirection ();
 			// ジャンプ中
 			if (Player.playerState == (int)Define.StateArray.STATE_JUMP) {
 				int directionX = (Player.playerDirection == Define.DIRECTION_RIGHT) ? 1 : -1;

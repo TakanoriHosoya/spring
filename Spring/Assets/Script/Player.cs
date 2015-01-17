@@ -49,4 +49,14 @@ public class Player : MonoBehaviour {
 			}
 		}
 	}
+
+	public void changeDirection() {
+		if (playerDirection == (int)Define.DIRECTION_RIGHT) {
+			playerDirection = (int)Define.DIRECTION_LEFT;
+			transform.localScale = new Vector3 (-0.5f, 0.5f, 0);
+		} else {
+			playerDirection = (int)Define.DIRECTION_RIGHT;
+			transform.localScale = new Vector3 (0.5f, 0.5f, 0);
+		}
+	}
 }
