@@ -3,11 +3,13 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
-	public float speed = 10;
-	public GameObject player;
-	public int playerState = 0;
+	public static float speed = 10;
+	public static int playerState     = (int)Define.StateArray.STATE_READY;
+	public static int playerDirection = (int)Define.DIRECTION_RIGHT;
 
-	private Vector2 selfGravity = new Vector2(0, -3.0f);
+	public GameObject player;
+
+	private Vector2 selfGravity  = new Vector2(0, -3.0f);
 
 	// Use this for initialization
 	void Start () {
@@ -16,17 +18,32 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (playerState == 1) {
+		// ジャンプ中は重力がかかる
+		if (playerState == (int)Define.StateArray.STATE_JUMP || playerState == (int)Define.StateArray.STATE_CATCH_READY) {
 			rigidbody2D.AddForce (selfGravity);
 		}
 	}
 
 	void OnGUI() {
+		// ボタン押す処理
 		if (Event.current.type == EventType.MouseDown) {
-			if (playerState == 0) {
-				Vector2 direction = new Vector2 (1, 1).normalized;
+			// スタート→溜め
+			if (playerState == (int)Define.StateArray.STATE_READY) {
+				playerState = (int)Define.StateArray.STATE_START;
+				// ジャンプ中→掴まり準備
+			} else if (playerState == (int)Define.StateArray.STATE_JUMP) {
+				playerState = (int)Define.StateArray.STATE_CATCH_READY;
+			}
+		} else if ((Event.current.type == EventType.MouseUp)) {
+			// 射出
+			if ((playerState == (int)Define.StateArray.STATE_START) || (playerState == (int)Define.StateArray.STATE_CATCH)) {
+				int directionX = (playerDirection == Define.DIRECTION_RIGHT) ? 1 : -1;
+				Vector2 direction = new Vector2 (directionX, 1).normalized;
 				rigidbody2D.velocity = direction * speed;
-				playerState = 1;
+				playerState = (int)Define.StateArray.STATE_JUMP;
+			// ジャンプ中
+			} else if (playerState == (int)Define.StateArray.STATE_CATCH_READY) {
+				playerState = (int)Define.StateArray.STATE_JUMP;
 			}
 		}
 	}
