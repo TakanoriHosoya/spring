@@ -15,12 +15,14 @@ public class Title : MonoBehaviour {
 		// tapされたかどうか
 		if (Input.touchCount > 0) {
 			// tapされたのでScene遷移
-			Application.LoadLevel ("SceneSelect");
+			//Application.LoadLevel ("SceneSelect");
+			FadeManager.Instance.LoadLevel("SceneSelect",1.0f);
 		}
 
 		if (Input.GetMouseButtonDown(0)) {
 			// tapされたのでScene遷移
-			Application.LoadLevel ("SceneSelect");
+			//Application.LoadLevel ("SceneSelect");
+			FadeManager.Instance.LoadLevel("SceneSelect",1.0f);
 		}
 	}
 }

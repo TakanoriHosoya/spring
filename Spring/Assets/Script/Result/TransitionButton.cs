@@ -16,11 +16,13 @@ public class TransitionButton : MonoBehaviour {
 
 	public void selectButtonClick()
 	{
-		Application.LoadLevel ("SceneSelect");
+		//Application.LoadLevel ("SceneSelect");
+		FadeManager.Instance.LoadLevel("SceneSelect",1.0f);
 	}
 
 	public void retryButtonClick()
 	{
-		Application.LoadLevel ("SceneMain");
+		//Application.LoadLevel ("SceneMain");
+		FadeManager.Instance.LoadLevel("SceneMain",1.0f);
 	}
 }
