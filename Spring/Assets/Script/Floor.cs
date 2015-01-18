@@ -18,7 +18,9 @@ public class Floor : MonoBehaviour {
 		if (col.gameObject.name == "Player") {
 			GameObject enterPlayer = col.gameObject;
 			enterPlayer.rigidbody2D.velocity = new Vector2 (0, 0);
-		}
+			Player.playerState = (int)Define.StateArray.STATE_READY;
+			enterPlayer.transform.position = new Vector3 (0, -5, -6);
+			}
 	}
 
 }
