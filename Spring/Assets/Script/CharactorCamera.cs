@@ -23,4 +23,11 @@ public class CharactorCamera : MonoBehaviour {
 		}
 	
 	}
+
+	/******************************************
+	 * Cameraの位置を初期化
+	 ******************************************/ 
+	public void initCamera() {
+		this.gameObject.transform.position = new Vector3 (0f, 0f,-10f);
+	}
 }

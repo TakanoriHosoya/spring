@@ -22,6 +22,10 @@ public class Player : MonoBehaviour {
 		if (playerState == (int)Define.StateArray.STATE_JUMP || playerState == (int)Define.StateArray.STATE_CATCH_READY) {
 			rigidbody2D.AddForce (selfGravity);
 		}
+		// start中は初期化しておく
+		if (playerState == (int)Define.StateArray.STATE_READY) {
+			initPlayer();
+		}
 	}
 
 	void OnGUI() {
@@ -58,5 +62,20 @@ public class Player : MonoBehaviour {
 			playerDirection = (int)Define.DIRECTION_RIGHT;
 			transform.localScale = new Vector3 (0.5f, 0.5f, 0);
 		}
+	}
+
+	/**********************************
+	 * Playerの初期化処理
+	 **********************************/
+	public void initPlayer(){
+		// スピード
+		speed = 0;
+		// Playerの状態
+		playerState = (int)Define.StateArray.STATE_READY;
+		// 位置を初めのところに
+		this.gameObject.transform.position = new Vector3( 0.0f, -5.0f, -6.0f);
+
+		// animationを待機に
+		Playeranimation.type = 1;
 	}
 }
