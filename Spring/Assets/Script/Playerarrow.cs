@@ -12,7 +12,4 @@ public class Playerarrow : MonoBehaviour {
 	void Update () {
 	
 	}
-
-	public static void Destroy(Object obj) {
-	}
 }
