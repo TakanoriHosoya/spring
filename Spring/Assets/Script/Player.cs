@@ -59,7 +59,11 @@ public class Player : MonoBehaviour {
 					if (timer != null) {
 						timer.GetComponent<Timer> ().startTimer ();
 					}
-					Destroy(transform.FindChild("PlayerArrow").gameObject);
+					Transform arrowTransform = transform.FindChild("PlayerArrow");
+					if (arrowTransform != null) {
+						GameObject arrow = arrowTransform.gameObject;
+						Destroy(arrow);
+					} 
 				}
 
 				int directionX = (playerDirection == Define.DIRECTION_RIGHT) ? 1 : -1;
@@ -94,7 +98,10 @@ public class Player : MonoBehaviour {
 		playerState = (int)Define.StateArray.STATE_READY;
 		// 位置を初めのところに
 		this.gameObject.transform.position = new Vector3( 0.0f, -5.0f, -6.0f);
-
+		// 移動速度を初期化
+		Vector2 direction = new Vector2 (0.0f, 0.0f).normalized;
+		rigidbody2D.velocity = direction * speed;
+		
 		// animationを待機に
 		Playeranimation.type = 1;
 	}
