@@ -12,7 +12,7 @@ public class Gamemanager : MonoBehaviour {
 			stageNum = 1;
 		}
 
-		GameObject stage = (GameObject)Instantiate(Resources.Load("Prefab/Stage_1", typeof(GameObject)));
+		GameObject stage = (GameObject)Instantiate(Resources.Load("Prefab/Stage_" + stageNum, typeof(GameObject)));
 
 	}
 	
