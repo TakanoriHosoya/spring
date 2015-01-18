@@ -7,6 +7,8 @@ public class Player : MonoBehaviour {
 	public static int playerState     = (int)Define.StateArray.STATE_READY;
 	public static int playerDirection = (int)Define.DIRECTION_RIGHT;
 
+	public AudioClip jumpSe;
+
 	public GameObject player;
 
 	private Vector2 selfGravity  = new Vector2(0, -3.0f);
@@ -46,6 +48,10 @@ public class Player : MonoBehaviour {
 		} else if ((Event.current.type == EventType.MouseUp)) {
 			// 射出
 			if ((playerState == (int)Define.StateArray.STATE_START) || (playerState == (int)Define.StateArray.STATE_CATCH)) {
+				// SE
+				if (jumpSe != null) {
+					audio.PlayOneShot (jumpSe);
+				}
 				// 矢印の消去
 				if (playerState == (int)Define.StateArray.STATE_START) {
 					Destroy(transform.FindChild("PlayerArrow").gameObject);
