@@ -6,6 +6,8 @@ public class Title : MonoBehaviour {
 	public AudioClip touchSE;
 	public GameObject bgmManager;
 
+	private bool coFlag = false;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -17,30 +19,35 @@ public class Title : MonoBehaviour {
 	{
 		// tapされたかどうか
 		if (Input.touchCount > 0) {
-			// SE
-			this.audio.PlayOneShot (touchSE);
 			// tapされたのでScene遷移
 			//Application.LoadLevel ("SceneSelect");
 			//FadeManager.Instance.LoadLevel("SceneSelect",1.0f);
-			StartCoroutine ("startEvent");
+			if (!this.coFlag) {
+				StartCoroutine ("startEvent");
+			}
 		}
 
 		if (Input.GetMouseButtonDown(0)) {
-			// SE
-			this.audio.PlayOneShot (touchSE);
 			// tapされたのでScene遷移
 			//Application.LoadLevel ("SceneSelect");
 			//FadeManager.Instance.LoadLevel("SceneSelect",1.0f);
-			StartCoroutine ("startEvent");
+			if (!this.coFlag) {
+				StartCoroutine ("startEvent");
+			}
 		}
 	}
 
 	// ゲーム開始
 	private IEnumerator startEvent(){
+		this.coFlag = true;
+
+		// SE
+		this.audio.PlayOneShot (touchSE);
+
 		if (bgmManager) {
 			bgmManager.audio.Stop ();
 		}
-		yield return new WaitForSeconds (2f);
+		yield return new WaitForSeconds (1f);
 		FadeManager.Instance.LoadLevel("SceneSelect",1.0f);
 	}
 }
