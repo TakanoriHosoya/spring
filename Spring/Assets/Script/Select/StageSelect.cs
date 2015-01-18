@@ -20,7 +20,7 @@ public class StageSelect : MonoBehaviour {
 		// ステージ番号を送る処理
 		Debug.Log (stageNumber);
 
-		PlayerPrefs.SetInt ("STAGE_NUM", stageNumber);
+		PlayerPrefs.SetInt (Define.STAGE_NUM, stageNumber);
 
 		//Application.LoadLevel ("SceneMain");
 		FadeManager.Instance.LoadLevel("SceneMain", 1.0f);

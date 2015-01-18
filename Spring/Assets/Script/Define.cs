@@ -20,4 +20,7 @@ public class Define {
 
 	public const int DIRECTION_LEFT  = 1;
 	public const int DIRECTION_RIGHT = 2;
+
+	public const string STAGE_NUM = "STAGE_NUM";
+	public const string STAGE_TIME = "stage_";
 }
