@@ -120,4 +120,21 @@ public class Player : MonoBehaviour {
 		// animationを待機に
 		Playeranimation.type = 1;
 	}
+
+	/**********************************
+	 * Playerの初期化処理(リザルトボタン)
+	 **********************************/
+	public void resultButtonForInitPlayer(){
+		
+		if (!canResetFlg) {
+			return;
+		}
+
+		// Playerの初期化
+		this.initPlayer();
+		// タイマーの初期化
+		GameObject timer = GameObject.Find ("Timer");
+		timer.GetComponent<Timer> ().resetTimer ();
+		timer.GetComponent<Timer> ().stopTimer ();
+	}
 }
