@@ -15,7 +15,7 @@ public class Timer : MonoBehaviour {
 		DontDestroyOnLoad(this.gameObject);
 
 		// 変更するテキストを指定
-		TimerFormat= GameObject.Find("Statusbar/Canvas/Timer");
+		TimerFormat= GameObject.Find("Canvastimer/Timer");
 		timerFormat = TimerFormat.GetComponent<Text> ();
 	}
 	
