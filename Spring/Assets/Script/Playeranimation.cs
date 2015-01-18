@@ -61,25 +61,25 @@ public class Playeranimation : MonoBehaviour {
 		isWall  = false;	// 壁に張り付いてる
 	}
 
-	void changeVelocity(int changeFlg) {
-		switch (changeFlg) {
+	void changeVelocity(int velocityType) {
+		switch (velocityType) {
 		case (1):
-			Player.speed = 1;
+			Player.speed = 4;
 			break;
 		case (2):
-			Player.speed = 3;
-			break;
-		case (3):
 			Player.speed = 5;
 			break;
+		case (3):
+			Player.speed = 6;
+			break;
 		case (4):
-			Player.speed = 7;
+			Player.speed = 8;
 			break;
 		case (5):
 			Player.speed = 10;
 			break;
 		default:
-			Player.speed = 1;
+			Player.speed = 4;
 			break;
 		}
 	}

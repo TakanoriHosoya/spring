@@ -14,10 +14,18 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		player = GameObject.Find ("Player");
+		rigidbody2D.velocity = new Vector2(0, 0);
+
+		playerState = (int)Define.StateArray.STATE_READY;
+		playerDirection = (int)Define.DIRECTION_RIGHT;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
+	}
+
+	void FixedUpdate() {
 		// ジャンプ中は重力がかかる
 		if (playerState == (int)Define.StateArray.STATE_JUMP || playerState == (int)Define.StateArray.STATE_CATCH_READY) {
 			rigidbody2D.AddForce (selfGravity);
@@ -38,6 +46,11 @@ public class Player : MonoBehaviour {
 		} else if ((Event.current.type == EventType.MouseUp)) {
 			// 射出
 			if ((playerState == (int)Define.StateArray.STATE_START) || (playerState == (int)Define.StateArray.STATE_CATCH)) {
+				// 矢印の消去
+				if (playerState == (int)Define.StateArray.STATE_START) {
+					Destroy(transform.FindChild("PlayerArrow").gameObject);
+				}
+
 				int directionX = (playerDirection == Define.DIRECTION_RIGHT) ? 1 : -1;
 				Vector2 direction = new Vector2 (directionX, 1).normalized;
 				rigidbody2D.velocity = direction * speed;
