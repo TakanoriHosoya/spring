@@ -9,13 +9,10 @@ public class Player : MonoBehaviour {
 
 	public AudioClip jumpSe;
 
-	public GameObject player;
-
 	private Vector2 selfGravity  = new Vector2(0, -3.0f);
 
 	// Use this for initialization
 	void Start () {
-		player = GameObject.Find ("Player");
 		rigidbody2D.velocity = new Vector2(0, 0);
 
 		playerState = (int)Define.StateArray.STATE_READY;
@@ -54,6 +51,10 @@ public class Player : MonoBehaviour {
 				}
 				// 矢印の消去
 				if (playerState == (int)Define.StateArray.STATE_START) {
+					GameObject timer = GameObject.Find ("Timer");
+					if (timer != null) {
+						timer.GetComponent<Timer> ().startTimer ();
+					}
 					Destroy(transform.FindChild("PlayerArrow").gameObject);
 				}
 
