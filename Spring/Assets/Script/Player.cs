@@ -13,6 +13,8 @@ public class Player : MonoBehaviour {
 	private Vector2 selfGravity    = new Vector2(0, -3.0f);
 	private Vector2 finishGravity  = new Vector2(0, -0.7f);
 
+	private bool canResetFlg = true;
+
 	// Use this for initialization
 	void Start () {
 		rigidbody2D.velocity = new Vector2(0, 0);
@@ -29,13 +31,16 @@ public class Player : MonoBehaviour {
 	void FixedUpdate() {
 		// ジャンプ中は重力がかかる
 		if (playerState == (int)Define.StateArray.STATE_JUMP || playerState == (int)Define.StateArray.STATE_CATCH_READY) {
+			canResetFlg = true;
 			rigidbody2D.AddForce (selfGravity);
 		}
 		// start中は初期化しておく
 		if (playerState == (int)Define.StateArray.STATE_READY) {
+			canResetFlg = false;
 			initPlayer();
 		}
 		if (playerState == (int)Define.StateArray.STATE_GOAL) {
+			canResetFlg = false;
 			rigidbody2D.AddForce (finishGravity);
 		}
 	}
@@ -97,6 +102,11 @@ public class Player : MonoBehaviour {
 	 * Playerの初期化処理
 	 **********************************/
 	public void initPlayer(){
+
+		if (!canResetFlg) {
+			return;
+		}
+
 		// スピード
 		speed = 0;
 		// Playerの状態
