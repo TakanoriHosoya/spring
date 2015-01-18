@@ -4,12 +4,14 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
 	public static float speed = 10;
+	private int finishCount = 100;
 	public static int playerState     = (int)Define.StateArray.STATE_READY;
 	public static int playerDirection = (int)Define.DIRECTION_RIGHT;
 
 	public AudioClip jumpSe;
 
-	private Vector2 selfGravity  = new Vector2(0, -3.0f);
+	private Vector2 selfGravity    = new Vector2(0, -3.0f);
+	private Vector2 finishGravity  = new Vector2(0, -0.7f);
 
 	// Use this for initialization
 	void Start () {
@@ -32,6 +34,9 @@ public class Player : MonoBehaviour {
 		// start中は初期化しておく
 		if (playerState == (int)Define.StateArray.STATE_READY) {
 			initPlayer();
+		}
+		if (playerState == (int)Define.StateArray.STATE_GOAL) {
+			rigidbody2D.AddForce (finishGravity);
 		}
 	}
 
