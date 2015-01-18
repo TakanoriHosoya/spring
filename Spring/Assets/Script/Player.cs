@@ -7,17 +7,24 @@ public class Player : MonoBehaviour {
 	public static int playerState     = (int)Define.StateArray.STATE_READY;
 	public static int playerDirection = (int)Define.DIRECTION_RIGHT;
 
-	public GameObject player;
+	public AudioClip jumpSe;
 
 	private Vector2 selfGravity  = new Vector2(0, -3.0f);
 
 	// Use this for initialization
 	void Start () {
-		player = GameObject.Find ("Player");
+		rigidbody2D.velocity = new Vector2(0, 0);
+
+		playerState = (int)Define.StateArray.STATE_READY;
+		playerDirection = (int)Define.DIRECTION_RIGHT;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
+	}
+
+	void FixedUpdate() {
 		// ジャンプ中は重力がかかる
 		if (playerState == (int)Define.StateArray.STATE_JUMP || playerState == (int)Define.StateArray.STATE_CATCH_READY) {
 			rigidbody2D.AddForce (selfGravity);
@@ -42,6 +49,19 @@ public class Player : MonoBehaviour {
 		} else if ((Event.current.type == EventType.MouseUp)) {
 			// 射出
 			if ((playerState == (int)Define.StateArray.STATE_START) || (playerState == (int)Define.StateArray.STATE_CATCH)) {
+				// SE
+				if (jumpSe != null) {
+					audio.PlayOneShot (jumpSe);
+				}
+				// 矢印の消去
+				if (playerState == (int)Define.StateArray.STATE_START) {
+					GameObject timer = GameObject.Find ("Timer");
+					if (timer != null) {
+						timer.GetComponent<Timer> ().startTimer ();
+					}
+					Destroy(transform.FindChild("PlayerArrow").gameObject);
+				}
+
 				int directionX = (playerDirection == Define.DIRECTION_RIGHT) ? 1 : -1;
 				Vector2 direction = new Vector2 (directionX, 1).normalized;
 				rigidbody2D.velocity = direction * speed;

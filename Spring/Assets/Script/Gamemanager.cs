@@ -12,10 +12,10 @@ public class Gamemanager : MonoBehaviour {
 			stageNum = 1;
 		}
 
-		GameObject stage = (GameObject)Instantiate(Resources.Load("Prefab/Stage_" + stageNum, typeof(GameObject)));
+		GameObject stage = (GameObject)Instantiate(Resources.Load("Prefab/Stage_" + stageNum.ToString(), typeof(GameObject)));
 
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 	
