@@ -19,7 +19,11 @@ public class Goal : MonoBehaviour {
 			// タイマーを止めて保存
 			Transform timerObject = gameObject.transform.Find ("Timer");
 			if (timerObject) {
-				timerObject.GetComponent<Timer> ().saveStageTime ("stage_1");
+				int stageNum = PlayerPrefs.GetInt ("STAGE_NUM");
+				if (stageNum <= 0 && stageNum > 3 ) {
+					stageNum = 1;
+				}
+				timerObject.GetComponent<Timer> ().saveStageTime ("stage_" + stageNum.ToString());
 			}
 			StartCoroutine ("goalEvent");
 		}
