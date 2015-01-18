@@ -39,6 +39,10 @@ public class Timer : MonoBehaviour {
 	// タイマーをリセット
 	public void resetTimer(){
 		this.time = 0f;
+		timerFormat.text = string.Format("{0:00}:{1:00}:{2:00}",
+			0,
+			0,
+			0);
 	}
 
 	/**

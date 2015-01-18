@@ -18,6 +18,9 @@ public class Goal : MonoBehaviour {
 	// プレイヤーがゴールに衝突したら
 	void OnTriggerEnter2D (Collider2D col) {
 		if (col.gameObject.name == "Player") {
+			Player.playerState = (int)Define.StateArray.STATE_GOAL;
+			int directionX = (Player.playerDirection == Define.DIRECTION_RIGHT) ? 1 : -1;
+			col.gameObject.rigidbody2D.velocity = new Vector2 (directionX, 1);
 			// タイマーを止めて保存
 			if (timerObject) {
 				int stageNum = PlayerPrefs.GetInt ("STAGE_NUM");

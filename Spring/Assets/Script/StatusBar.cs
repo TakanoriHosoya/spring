@@ -35,6 +35,6 @@ public class StatusBar : MonoBehaviour {
 	}
 
 	public void exitStage(){
-		Application.LoadLevel ("SceneStage");
+		Application.LoadLevel ("SceneSelect");
 	}
 }
