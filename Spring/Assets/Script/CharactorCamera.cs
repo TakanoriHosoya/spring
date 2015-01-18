@@ -14,8 +14,8 @@ public class CharactorCamera : MonoBehaviour {
 	void Update () {
 		if (playerObject) {
 
-			if (playerObject.transform.position.y - this.gameObject.transform.position.y >= 2.0f) {
-				this.gameObject.transform.position = new Vector3 (0f, playerObject.transform.position.y - 2f,-10f);
+			if (playerObject.transform.position.y - this.gameObject.transform.position.y >= -1.0f) {
+				this.gameObject.transform.position = new Vector3 (0f, playerObject.transform.position.y + 1f,-10f);
 			}
 			if (playerObject.transform.position.y - this.gameObject.transform.position.y <= -4.0f) {
 				this.gameObject.transform.position = new Vector3 (0f, playerObject.transform.position.y + 4f,-10f);
