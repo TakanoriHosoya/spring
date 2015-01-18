@@ -3,9 +3,11 @@ using System.Collections;
 
 public class Goal : MonoBehaviour {
 
+	public GameObject timerObject;
+
 	// Use this for initialization
 	void Start () {
-	
+		timerObject = GameObject.Find("Timer");
 	}
 	
 	// Update is called once per frame
@@ -17,12 +19,12 @@ public class Goal : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D col) {
 		if (col.gameObject.name == "Player") {
 			// タイマーを止めて保存
-			Transform timerObject = gameObject.transform.Find ("Timer");
 			if (timerObject) {
 				int stageNum = PlayerPrefs.GetInt ("STAGE_NUM");
 				if (stageNum <= 0 && stageNum > 3 ) {
 					stageNum = 1;
 				}
+				timerObject.GetComponent<Timer> ().stopTimer ();
 				timerObject.GetComponent<Timer> ().saveStageTime ("stage_" + stageNum.ToString());
 			}
 			StartCoroutine ("goalEvent");
